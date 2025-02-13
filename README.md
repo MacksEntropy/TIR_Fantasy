@@ -6,7 +6,7 @@ Personal project with the goal to create a scoring system for the Texas Independ
 The performance score ($P$) is calculated using the following equation:
 
 $$
-P = D * (w_{s} * S + w_{a} A )
+P = D * (w_{s}S + w_{a}A )
 $$
 
 where
