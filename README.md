@@ -20,4 +20,4 @@ w_{s} = 0.25 \qquad w_a = 0.75
 \end{align*}
 $$
 
-and where the weights $w_{s} = 0.25$, $w_a = 0.75$, and ranks are predetermined.
+The weights $w_{s} = 0.25$, $w_a = 0.75$ are predetermined to mainly favor reaching a goal pace. $\text{Rank}$ is metric ranging from 1 (hardest) to 36 (easiest) which indexes the difficulty of each race leg. Rankings are based on everything else being equal. So, neither the time of day (or which day) the legs are run, nor the weather is considered in the ranking. The largest factor is the length of the leg, followed by changes in elevation, and number of turns to navigate. 
