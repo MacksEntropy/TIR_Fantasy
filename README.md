@@ -6,16 +6,16 @@ Personal project with the goal to create a scoring system for the Texas Independ
 The performance score ($P$) is calculated using the following equation:
 
 $$
-P = D * (w_{s}S + w_{a}A )
+P = D * (w_{s}S - w_{a}A )
 $$
 
 where
 
 $$
 \begin{align*}
-    \text{Speed Score}\qquad S = \frac{\text{Goal Time}}{\text{Actual Time}} \\
-\text{Pace Adherence} \qquad A = \left[1 - \left(\frac{\left|{\text{Actual Pace - Goal Pace}}\right|}{\text{Goal Pace}}\right)^2 + \left(\frac{\left|{\text{Actual Pace - Goal Pace}}\right|}{\text{Goal Pace}}\right)\right]\\
-\text{Difficulty Score}\qquad D = \left(1 - \frac{\text{Rank - 1}}{36 - 1}\right) \times 10
+    \text{Speed Score}\qquad S = \frac{\text{Actual Time}}{\text{Goal Time}} \\
+\text{Pace Adherence} \qquad A = \left(\frac{{\text{Actual Pace - Goal Pace}}}{\text{Goal Pace}}\right)^2 + \frac{{\text{Actual Pace - Goal Pace}}}{\text{Goal Pace}} \\
+\text{Difficulty Score}\qquad D = 100 - \left(\left(\text{Rank} - 1\right)\times\frac{8}{7}\right)
 \end{align*}
 $$
 
