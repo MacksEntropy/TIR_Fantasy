@@ -38,6 +38,11 @@ class TIRFantasy:
         return difficulty_score * ((0.25 * speed_score) - (0.75 * pace_adherence))
     
     def is_valid_race_time(self, time : str) -> bool:
+        """
+        Validates if a given time is in the HH:MM:SS format
+        """
+        if type(time) != str:
+            return False
         p = r"^([0-1]\d|2[0-3]):([0-5]\d):([0-5]\d)$"
         return bool(re.match(p, time))
     

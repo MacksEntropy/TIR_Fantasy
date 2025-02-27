@@ -48,3 +48,23 @@ def test_performance_score(t, expected):
         difficulty_score=tir.difficulty_score(1)
     ),2)
 
+
+@pytest.mark.parametrize("t,expected", [
+    ("00:07:30", True),
+    ("ehfdiuwhfwfw", False),
+    (480, False),
+    ("01:70:30", False),
+    ("AB:07:30", False),
+])
+def test_is_valid_race_times(t, expected):
+    assert expected == tir.is_valid_race_time(t)
+
+@pytest.mark.parametrize("t,expected", [
+    ("01:00:30", 3630),
+    ("00:07:30", 450),
+    ("00:00:01", 1),
+    ("00:01:00", 60),
+    ("00:00:00", 0),
+])
+def test_convert_race_times(t, expected):
+    assert expected == tir.convert_race_time(t)
