@@ -52,7 +52,7 @@ class TIRFantasy:
         :param: race_time (str) : Time in the HH:MM:SS format
         """
         if not self.is_valid_race_time(race_time):
-            raise Exception(f"Invalid Race Time : {race_time}")
+            raise ValueError(f"Invalid Race Time : {race_time}")
         times = race_time.split(":")
         hours = int(times[0])
         minutes = int(times[1])

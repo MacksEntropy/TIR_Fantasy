@@ -61,10 +61,15 @@ def test_is_valid_race_times(t, expected):
 
 @pytest.mark.parametrize("t,expected", [
     ("01:00:30", 3630),
-    ("00:07:30", 450),
+    (480, pytest.raises(ValueError)),
     ("00:00:01", 1),
     ("00:01:00", 60),
     ("00:00:00", 0),
 ])
 def test_convert_race_times(t, expected):
-    assert expected == tir.convert_race_time(t)
+    if type(expected) == int:
+        assert expected == tir.convert_race_time(t)
+    else:
+        # Test for expected ValueError when an incorrect time is is read.
+        with expected:
+            assert expected == tir.convert_race_time(t)
