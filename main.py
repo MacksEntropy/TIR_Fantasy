@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import re
 
 class TIRFantasy:
 
@@ -36,6 +37,23 @@ class TIRFantasy:
         """
         return difficulty_score * ((0.25 * speed_score) - (0.75 * pace_adherence))
     
+    def is_valid_race_time(self, time : str) -> bool:
+        p = r"^([0-1]\d|2[0-3]):([0-5]\d):([0-5]\d)$"
+        return bool(re.match(p, time))
+    
+    def convert_race_time(self,race_time : str) -> int:
+        """
+        Converts the race time of a leg to seconds for further calculation.
+        :param: race_time (str) : Time in the HH:MM:SS format
+        """
+        if not self.is_valid_race_time(race_time):
+            raise Exception(f"Invalid Race Time : {race_time}")
+        times = race_time.split(":")
+        hours = int(times[0])
+        minutes = int(times[1])
+        seconds = int(times[2])
+        return hours*3600 + minutes * 60 + seconds
+    
 if __name__ =="__main__":
     tir = TIRFantasy()
-    tir.load_data("dummy_race_data.csv", "runner_data.csv")
+    print(tir.convert_race_time("01:00:30"))
