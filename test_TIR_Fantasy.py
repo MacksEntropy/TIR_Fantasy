@@ -73,3 +73,7 @@ def test_convert_race_times(t, expected):
         # Test for expected ValueError when an incorrect time is is read.
         with expected:
             assert expected == tir.convert_race_time(t)
+
+def test_load_data():
+    tir.load_data("data/dummy_race_data.csv", "data/runner_data.csv")
+    assert tir.legs.shape == (36,10) and tir.runners.shape == (36,3)
